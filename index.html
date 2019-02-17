@@ -182,7 +182,7 @@
         <div class="col-lg-8 mx-auto">
           <!-- Para configurar o endereço de email do formulário de contato, vá para mail / contact_me.php e atualize o endereço de email no arquivo PHP na linha 19. -->
           <!-- O formulário deve funcionar na maioria dos servidores da Web, mas se o formulário não estiver funcionando, talvez seja necessário configurar o servidor da Web de maneira diferente. -->
-          <form name="sentMessage" id="contactForm" novalidate="novalidate">
+          <form id="emailforms" name="sentMessage" id="contactForm" novalidate="novalidate">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Nome</label>
@@ -193,7 +193,7 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Email</label>
-                <input class="form-control" id="Email" type="email" placeholder="Email" required="required" data-validation-required-message="Please enter your email address.">
+                <input class="form-control" id="Email" type="text" placeholder="Email" required="required" data-validation-required-message="Please enter your email address.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -428,6 +428,12 @@
   <!-- Custom scripts for this template -->
   <script src="js/freelancer.min.js"></script>
 
+  <!-- java script criado para capturar o email -->
+  <script src="js/main.js"></script>
+
+  <!-- codigo java script do firebase google -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+  
 </body>
 
 </html>
