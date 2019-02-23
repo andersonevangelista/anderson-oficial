@@ -9,23 +9,38 @@
   };
   firebase.initializeApp(config);
 
-  var emailRef = firebase.database().ref('emails');
-  
-//Colocando um escutador para saber quando houve o click no botão
-document.getElementById('emailforms').addEventListener('submit', submitForm);
+// Criação da base de dados email no email
+  var emailFirebase = firebase.database().ref('email')
 
-function submitForm(e){
+
+
+
+// O getElementById faz com que peguemos o formulário e o addEventListener permite saber queando o botão do tipo submit do formulário 
+// foi clicado e já chama a função que será executada após o clique do botão.
+document.getElementById('formulario').addEventListener('submit',submeter);
+
+function submeter(e) {
+    // e.preventDefault permite que possamos dar uma pausa no código, ele entra na função, quando executa ele para. Adicionar a letra "e" na função
     e.preventDefault();
-
-    var email = document.getElementById('Email').value;
-
-    saveEmail(email)
+    // o sinal de igual significa que esta variavel vai receber alguma informação
+    var email = document.getElementById('emaildigitado').value;
+    var nome = document.getElementById('nomedigitado').value;
+    var telefone = document.getElementById('telefonedigitado').value;
+    var msg = document.getElementById('msgdigitado').value;
+    salvarFirebase(email, nome, telefone, msg);
+    
+  
 }
 
-function saveEmail(email){
-    var newemailRef = emailRef.push();
-
-    newemailRef.set({
-        email: email
-    });
+function salvarFirebase(email, nome, telefone, msg) {
+    // newEmail está recebendo a função do push do Firebase 
+    var newEmail = emailFirebase.push()
+    // A variavel email do firebase vai receber a nossa variavel email
+    newEmail.set({
+        email: email,
+        nome: nome,
+        telefone: telefone,
+        msg: msg
+    }); 
+    console.log("Mensagem enviada para o Firebase");
 }
